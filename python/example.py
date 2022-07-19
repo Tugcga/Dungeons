@@ -1,4 +1,5 @@
-from promethean import LevelGenerator, Level, Options, Tile, RoomType
+from promethean import LevelGenerator, Level, LevelStatistics, Options, Tile, RoomType
+from typing import List
 
 if __name__ == "__main__":
     # setup generator options
@@ -10,17 +11,17 @@ if __name__ == "__main__":
     # setup other parameters...
 
     # create generator
-    generator = LevelGenerator(options)
+    generator: LevelGenerator = LevelGenerator(options)
 
     # generate the level
-    level = generator.generate()
+    level: Level = generator.generate()
 
     # extract level statistics data
-    level_stat = level.get_statistics()
+    level_stat: LevelStatistics = level.get_statistics()
 
     # get level tiles
     # this is a 2d-array, each value is a tile type
     # 0 - walkable tile, all other tiles are not walkable
     # 1 - empty 
     # 2 - 13 - different types of walls
-    tiles = level.render()
+    tiles: List[List[Tile]] = level.render()
