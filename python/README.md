@@ -59,14 +59,3 @@ python pyside_example.py
 It draws generated map into canvas and allows to tweak generation parameters and 
 
 ![Application example](../images/app_01.png?raw=true)
-
-
-### Benchmark
-
-Map size | Generation time 
---- | ---
-32 x 32 | 0.09 sec
-64 x 64 | 0.66 sec
-128 x 128 | 1.51 sec
-192 x 192 | 2.56 sec
-256 x 256 | 3.91 sec

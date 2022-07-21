@@ -1,0 +1,7 @@
+node_modules
+*.json
+assembly/index.ts
+build/benchmark.js
+build/index.wasm
+build/test_01.js
+build/example_app.html
