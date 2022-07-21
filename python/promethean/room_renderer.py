@@ -15,7 +15,7 @@ class DefaultRenderer(IRoomRenderer):
         return arr
 
 
-class CrossRenderer(IRoomRenderer):
+class DiamondRenderer(IRoomRenderer):
     def get_tiles(self, room: Room) -> List[List[Tile]]:
         offset: int = 0
         y_middle = room._width // 2
@@ -28,7 +28,7 @@ class CrossRenderer(IRoomRenderer):
         return arr
 
 
-class DiamondRenderer(IRoomRenderer):
+class CrossRenderer(IRoomRenderer):
     def get_tiles(self, room: Room) -> List[List[Tile]]:
         arr: List[List[Tile]] = [[Tile.Empty for j in range(room._width)] for i in range(room._height)]
         for x in range(room._height):
