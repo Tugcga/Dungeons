@@ -1,4 +1,5 @@
 from typing import List, Optional
+from queue import PriorityQueue
 
 from promethean.options import PathFinderTile, PathFinderOptions
 from promethean.point import Point
