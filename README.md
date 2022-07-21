@@ -9,9 +9,9 @@ The next table contains time of the generation process for different map sizes. 
 Map size | Python | AssemblyScript 
 --- | --- | ---
 32 x 32 | 0.09 sec | 0.011 sec
-64 x 64 | 0.66 sec | 0.089 sec
-128 x 128 | 1.51 sec | 0.24 sec
-192 x 192 | 2.56 sec | 0.46 sec
-256 x 256 | 3.91 sec | 0.68 sec
+64 x 64 | 0.50 sec | 0.089 sec
+128 x 128 | 1.40 sec | 0.24 sec
+192 x 192 | 2.31 sec | 0.46 sec
+256 x 256 | 3.55 sec | 0.68 sec
 
-Compiled into WASM AssemblyScript version is nearly x6 times faster than Python.
+Compiled into WASM AssemblyScript version is nearly x5.5 times faster than Python.

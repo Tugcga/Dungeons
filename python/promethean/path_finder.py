@@ -1,4 +1,5 @@
 from typing import List, Optional
+from queue import PriorityQueue
 
 from promethean.options import PathFinderTile, PathFinderOptions
 from promethean.point import Point
@@ -58,34 +59,29 @@ class PathFinderGraph:
         self._height: int = height
         self._width: int = width
         self._internal_grid: List[List[PathFinderNode]] = [[PathFinderNode(Point(i, j), 0, 0, Point()) for j in range(width)]for i in range(height)]
-        self._open: List[PathFinderNode] = []
+        self._open: PriorityQueue = PriorityQueue()
+        self._queue_counter: int = 0
 
     def reset(self):
         for i in range(self._height):
             for j in range(self._width):
                 self._internal_grid[i][j].reset()
-        self._open.clear()
+        self._open = PriorityQueue()
+        self._queue_counter = 0
 
     def open_node(self, position: Point, g: int, h: int, parent: Point):
         node: PathFinderNode = self._internal_grid[position._x][position._y]
         node.update(g, h, parent)
         node.open()
-        self._open.append(node)
+        self._open.put((node._f, self._queue_counter, node))
+        self._queue_counter += 1
 
     def has_open_nodes(self) -> bool:
-        return len(self._open) > 0
+        return not self._open.empty()
 
     def get_open_node_with_smallest_f(self) -> Optional[PathFinderNode]:
-        if len(self._open) > 0:
-            to_return_i: int = 0
-            to_return_f: int = self._open[0]._f
-            for i, node in enumerate(self._open):
-                if node._f < to_return_f:
-                    to_return_i = i
-                    to_return_f = node._f
-            # set the node closed
-            return_node: PathFinderNode = self._open.pop(to_return_i)
-            return_node.close()
+        if not self._open.empty():
+            min_f, c, return_node = self._open.get()
             return return_node
         else:
             return None
@@ -98,7 +94,8 @@ class PathFinderGraph:
             # add to the open list
             if node.is_undefined():
                 node.open()
-                self._open.append(node)
+                self._open.put((node._f, self._queue_counter, node))
+                self._queue_counter += 1
 
 
 def order_closed_nodes_as_array(graph: PathFinderGraph, end_node: PathFinderNode) -> List[Point]:
