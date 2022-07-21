@@ -7,7 +7,7 @@ This is port of the [Promethean](https://github.com/valantonini/Promethean) libr
 The next table contains time of the generation process for different map sizes. For AssembluScript version we use Node.js to execute WASM module.
 
 Map size | Python | AssemblyScript 
---- | ---
+--- | --- | ---
 32 x 32 | 0.09 sec | 0.011 sec
 64 x 64 | 0.66 sec | 0.089 sec
 128 x 128 | 1.51 sec | 0.24 sec
