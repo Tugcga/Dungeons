@@ -10,3 +10,5 @@ LICENSE_MIT
 .cargo-ok
 .travis.yml
 src/main.rs
+/build/test_01.js
+/build/benchmark.js

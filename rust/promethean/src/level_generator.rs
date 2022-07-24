@@ -272,7 +272,7 @@ impl LevelGenerator {
     pub fn set_room_size(&mut self, min_room_width: usize,
                                     max_room_width: usize,
                                     min_room_height: usize,
-                                    max_room_height: usize,) {
+                                    max_room_height: usize) {
         self.options.set_room_size(min_room_width, max_room_width, min_room_height, max_room_height);
     }
 
@@ -292,13 +292,25 @@ impl LevelGenerator {
     }
 
     #[wasm_bindgen]
-    pub fn add_room_type(&mut self, room_type: RoomType) {
-        self.options.add_room_type(room_type);
+    pub fn add_room_type(&mut self, room_type: u8) {
+        match room_type {
+            0 => self.options.add_room_type(RoomType::Square),
+            1 => self.options.add_room_type(RoomType::Rectangle),
+            2 => self.options.add_room_type(RoomType::Cross),
+            3 => self.options.add_room_type(RoomType::Diamond),
+            _ => {}
+        };
     }
 
     #[wasm_bindgen]
-    pub fn remove_room_type(&mut self, room_type: RoomType) {
-        self.options.remove_room_type(room_type);
+    pub fn remove_room_type(&mut self, room_type: u8) {
+        match room_type {
+            0 => self.options.remove_room_type(RoomType::Square),
+            1 => self.options.remove_room_type(RoomType::Rectangle),
+            2 => self.options.remove_room_type(RoomType::Cross),
+            3 => self.options.remove_room_type(RoomType::Diamond),
+            _ => {}
+        };
     }
 
     #[wasm_bindgen]

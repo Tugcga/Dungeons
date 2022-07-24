@@ -1,8 +1,5 @@
 use super::point::Point;
 
-use wasm_bindgen::prelude::*;
-
-#[wasm_bindgen]
 #[repr(u8)]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RoomType {
@@ -18,7 +15,6 @@ pub enum PathFinderTile {
     Pathable = 1,
 }
 
-#[wasm_bindgen]
 #[repr(u8)]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Tile {
