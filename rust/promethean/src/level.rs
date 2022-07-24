@@ -66,7 +66,13 @@ impl LevelStatistics {
 
     #[wasm_bindgen(getter)]
     pub fn room_centers(&self) -> Array {
-        return self.room_centers.clone().into_iter().map(JsValue::from).collect();
+        let mut to_return: Vec<i32> = Vec::with_capacity(2 * self.room_centers.len());
+        for p in &self.room_centers {
+            to_return.push(p.x());
+            to_return.push(p.y());
+        }
+
+        return to_return.into_iter().map(JsValue::from).collect();
     }
 }
 
@@ -80,6 +86,24 @@ pub struct Level {
 }
 
 impl Level {
+    pub fn new(height: usize, width: usize) -> Level {
+        let mut level: Vec<Vec<Tile>> = Vec::with_capacity(height);
+        for _x in 0..height {
+            let mut row: Vec<Tile> = Vec::with_capacity(width);
+            for _y in 0..width {
+                row.push(Tile::Empty);
+            }
+            level.push(row);
+        }
+
+        return Level {
+            height,
+            width,
+            level,
+            statistics: LevelStatistics::new()
+        };
+    }
+
     pub fn set_statistics(&mut self, rooms_count: usize, 
                                      corridors_count: usize, 
                                      all_corridors: bool, 
@@ -130,25 +154,6 @@ impl Level {
 
 #[wasm_bindgen]
 impl Level {
-    #[wasm_bindgen(constructor)]
-    pub fn new(height: usize, width: usize) -> Level {
-        let mut level: Vec<Vec<Tile>> = Vec::with_capacity(height);
-        for _x in 0..height {
-            let mut row: Vec<Tile> = Vec::with_capacity(width);
-            for _y in 0..width {
-                row.push(Tile::Empty);
-            }
-            level.push(row);
-        }
-
-        return Level {
-            height,
-            width,
-            level,
-            statistics: LevelStatistics::new()
-        };
-    }
-
     #[wasm_bindgen]
     pub fn statistics(&self) -> LevelStatistics {
         return self.statistics.clone();
@@ -170,7 +175,7 @@ impl Level {
         for x in 0..self.height {
             for y in 0..self.width {
                 let v: &Tile = &self.level[x][y];
-                to_return[x * self.width + y] = *v as u8;
+                to_return.push(*v as u8);
             }
         }
         return to_return.into_iter().map(JsValue::from).collect();
