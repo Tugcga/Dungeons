@@ -1,0 +1,11 @@
+/target
+**/*.rs.bk
+Cargo.lock
+bin/
+wasm-pack.log
+LICENSE_APACHE
+LICENSE_MIT
+.appveyor.yml
+.cargo-ok
+.travis.yml
+src/main.rs
