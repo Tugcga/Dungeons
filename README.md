@@ -4,7 +4,7 @@ This is port of the [Promethean](https://github.com/valantonini/Promethean) libr
 
 ## Benchmarks
 
-The next table contains time of the generation process for different map sizes. For AssembluScript version we use NodeJS to execute WASM module. Rust version we measure native complied application and also WASM module (also executed in NodeJS).
+The next table contains time of the generation process for different map sizes. For AssemblyScript version we use NodeJS to execute WASM module. Rust version we measure native complied application and also WASM module (also executed in NodeJS).
 
 Map size | Python | AssemblyScript (WASM, 29 kb) | Rust (native) | Rust (WASM, 51 kb)
 --- | --- | --- | -- | --
