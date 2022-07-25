@@ -195,3 +195,9 @@ The number of generated corridors between rooms
 
 Return the plain array with generated room centers. The first two values are coordinates of the first room center, then of the second and so on
 
+
+## Example application
+
+Example application is [here](https://tugcga.github.io/web_apps/rust_promethean/example_app.html). It use compiled WASM for map generation and draw it into 2d-canvas.
+
+![Application example](../../images/app_03.png?raw=true)

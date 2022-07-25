@@ -269,7 +269,7 @@ module.exports.__wbindgen_throw = function(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
 };
 
-const path = require('path').join(__dirname, 'promethean_wasm_bg.wasm');
+const path = require('path').join(__dirname, 'promethean_nodejs_bg.wasm');
 const bytes = require('fs').readFileSync(path);
 
 const wasmModule = new WebAssembly.Module(bytes);
