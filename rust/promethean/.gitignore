@@ -1,0 +1,16 @@
+/target
+**/*.rs.bk
+Cargo.lock
+bin/
+pkg/
+wasm-pack.log
+LICENSE_APACHE
+LICENSE_MIT
+.appveyor.yml
+.cargo-ok
+.travis.yml
+src/main.rs
+/build/test_01.js
+/build/benchmark.js
+build.bat
+/build/*.html
